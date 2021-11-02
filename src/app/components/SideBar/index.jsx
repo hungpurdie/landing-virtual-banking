@@ -1,0 +1,85 @@
+import React from "react";
+import PropTypes from "prop-types";
+import SideBarMenu from "./SideBarMenu";
+import styled from "styled-components";
+import { FaTimes } from "react-icons/fa";
+import { Link as LinkR } from "react-router-dom";
+SideBar.propTypes = {};
+
+function SideBar({ isOpen, toggle }) {
+  return (
+    <SideBarContainer isOpen={isOpen} onClick={toggle}>
+      <Icon>
+        <CloseIcon />
+      </Icon>
+      <SideBarWrapper>
+        <SideBarMenu toggle={toggle} />
+        <SideBtnWrap>
+          <SideBarRoute to="/signup" onClick={toggle}>
+            Sign up
+          </SideBarRoute>
+        </SideBtnWrap>
+      </SideBarWrapper>
+    </SideBarContainer>
+  );
+}
+
+export default SideBar;
+
+const SideBarContainer = styled.aside`
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  background-color: #0d0d0d;
+  display: grid;
+  align-items: center;
+  top: 0;
+  left: 0;
+
+  transition: 0.3s ease-in-out;
+  opacity: ${({ isOpen }) => (isOpen ? "100%" : "0")};
+  top: ${({ isOpen }) => (isOpen ? "0" : "-100%")};
+`;
+
+const Icon = styled.div`
+  position: absolute;
+  top: 1.2rem;
+  right: 1.5rem;
+  background-color: transparent;
+  font-size: 2rem;
+  cursor: pointer;
+  outline: none;
+`;
+
+const SideBtnWrap = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const SideBarRoute = styled(LinkR)`
+  border-radius: 50px;
+  background-color: #01bf71;
+  white-space: nowrap;
+  padding: 16px 64px;
+  color: #010606;
+  font-size: 16px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+  &:hover {
+    transition: all 0.2s ease-in-out;
+    background-color: #fff;
+    color: #010606;
+  }
+`;
+
+const CloseIcon = styled(FaTimes)`
+  color: #fff;
+`;
+
+const SideBarWrapper = styled.div`
+  color: #fff;
+`;
