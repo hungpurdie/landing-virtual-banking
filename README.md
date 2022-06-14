@@ -1,1 +1,2 @@
-# Building landing page use styled-components
+# vite-react-ts-starter
+React TypeScript stater created by Vite
